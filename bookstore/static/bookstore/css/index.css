@@ -1,0 +1,10 @@
+* {
+    padding: 10px;
+}
+.tcenter {
+    text-align: center;
+    align-content: center;
+}
+.book {
+    border-bottom: 3px solid greenyellow;
+}

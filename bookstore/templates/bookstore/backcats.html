@@ -1,0 +1,29 @@
+{% load static%}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href='{% static "favicon.ico" %}'>
+    <title>Book Store</title>
+</head>
+<body>
+    
+    {% for book in books %}
+        <img src="{% static 'bookstore/imgs/cat.jpg' %}" alt="omg" width=20%>
+        <li>Book: {{ book.title }}</li>
+        <li>Year: {{ book.year }}</li>
+        <li>Description: {{ book.description }}</li>
+        <li>Price: {{ book.price }}</li>
+        <li>Authors: {% for auth in book.authors.all %}
+                        {{auth}},
+                        {% endfor %}
+        </li>
+        <li>Category: {{ book.category }}</li>
+        ===================================<br>
+    {% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+header {
+  padding: 154px 0 100px;
+}
+
+@media (min-width: 992px) {
+  header {
+    padding: 156px 0 100px;
+  }
+}
+
+section {
+  padding: 150px 0;
+}
+
+.floating-box {
+    display: inline-block;
+    width: 300px;
+    height: 150px;
+    margin: 10px;
+}
