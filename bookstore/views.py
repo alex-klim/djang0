@@ -26,3 +26,11 @@ def books(request):
         'books':books
     }
     return HttpResponse(template.render(context, request))
+
+def book_details(request, pk):
+    template = get_template('bookstore/book_detail.html')
+    book = Book.objects.get(pk=pk)
+    context = {
+        'book':book
+    }
+    return HttpResponse(template.render(context, request))

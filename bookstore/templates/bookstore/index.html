@@ -59,7 +59,7 @@
             <p>what the heck?????</p>
             {% for book in books %}
             <div class="floating-box">
-                <img src="{% static 'bookstore/imgs/cat.jpg' %}" alt="omg" width=100%>
+                <a href="{% url 'book_details' book.pk %}"><img src="{% static 'bookstore/imgs/cat.jpg' %}" alt="omg" width=100%></a>
                 <ul class="w3-ul book">
                 <li>Book: {{ book.title }}</li>
                 <li>Price: {{ book.price }}</li>

@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/', views.index, name='index'),
     url(r'^create_category/', views.create_category, name='create_category'),
-    url(r'^books/', views.books, name='books')
+    url(r'^books/$', views.books, name='books'),
+    url(r'^books/(?P<pk>[0-9]+)/$', views.book_details, name='book_details')
 ]
