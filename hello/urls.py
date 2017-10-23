@@ -16,11 +16,14 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from bookstore import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/', views.index, name='index'),
     url(r'^create_category/', views.create_category, name='create_category'),
     url(r'^books/$', views.books, name='books'),
-    url(r'^books/(?P<pk>[0-9]+)/$', views.book_details, name='book_details')
-]
+    url(r'^books/(?P<pk>[0-9]+)/$', views.book_details, name='book_details'),
+    url(r'^books/new$', views.add_book, name='add_book')
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

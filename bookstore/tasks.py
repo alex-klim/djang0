@@ -1,5 +1,18 @@
 from celery import shared_task
+from imagekit import ImageSpec
+from imagekit.processors import ResizeToFill
 
+from .models import Book
+from hello.settings import BASE_DIR
+from django.core.files.base import ContentFile
+
+from django.core.files import File
+
+
+class Thumbnail(ImageSpec):
+    processors = [ResizeToFill(250, 200)]
+    format = 'JPEG'
+    options = {'quality': 60}
 
 @shared_task(bind=True)
 def debug_task(self):
@@ -15,3 +28,19 @@ def add(self, x, y):
 def mul(self, x, y):
     print(x*y)
     return x * y
+
+@shared_task
+def generate_thumbnail(book_id):
+    book = Book.objects.get(pk=book_id)
+    if book:
+        print(book.image)
+        print(BASE_DIR+book.image.url)
+        fil = open(BASE_DIR+book.image.url, 'rb')
+        shiet = Thumbnail(source=fil)
+        givno = shiet.generate()
+        oops = givno.read()
+        book.thumbnail.save('thumb', oops)
+        book.save()
+        fil.close()
+        print("ok")
+    else: print('zhopa')

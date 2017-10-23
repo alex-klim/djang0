@@ -56,10 +56,9 @@
           <div class="col-lg-8 mx-auto">
             <h2>Books that already available:</h2>
             <p class="lead">Dont be very suspicious. This is real books</p>
-            <p>what the heck?????</p>
             {% for book in books %}
             <div class="floating-box">
-                <a href="{% url 'book_details' book.pk %}"><img src="{% static 'bookstore/imgs/cat.jpg' %}" alt="omg" width=100%></a>
+                <a href="{% url 'book_details' book.pk %}"><img src= "/media/{{ book.image }}" alt="{{ book.title }}" width="200", height="200"></a>
                 <ul class="w3-ul book">
                 <li>Book: {{ book.title }}</li>
                 <li>Price: {{ book.price }}</li>

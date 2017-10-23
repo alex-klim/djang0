@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +17,9 @@
     <div class="row">
     <div class="col-sm-9">
             <div class="tcenter">
-                <img src="{% static 'bookstore/imgs/cat.jpg' %}" alt="omg" width=30%>
                 <ul class="w3-ul book">
+                <li><img src= "/media/{{ book.image }}" alt="{{ book.title }}" width="200", height="200"></li>
+                <li>image url: {{ book.image }}</li>
                 <li>Book: {{ book.title }}</li>
                 <li>Year: {{ book.year }}</li>
                 <li>Description: {{ book.description }}</li>
