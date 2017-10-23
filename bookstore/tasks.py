@@ -4,9 +4,6 @@ from imagekit.processors import ResizeToFill
 
 from .models import Book
 from hello.settings import BASE_DIR
-from django.core.files.base import ContentFile
-
-from django.core.files import File
 
 
 class Thumbnail(ImageSpec):
@@ -40,4 +37,4 @@ def generate_thumbnail(book_id):
         book.save()
         fil.close()
         print("ok")
-    else: print('zhopa')
+    else: print('oops')
