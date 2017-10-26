@@ -30,13 +30,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+              <a class="nav-link js-scroll-trigger" href="{% url 'add_book' %}">Add book</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+              <a class="nav-link js-scroll-trigger" href="{% url 'add_author' %}">Add author</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+              <a class="nav-link js-scroll-trigger" href="{% url 'add_category' %}">Add category</a>
             </li>
           </ul>
         </div>
@@ -56,7 +56,7 @@
           <div class="col-lg-8 mx-auto">
             <h2>Books that already available:</h2>
             <p class="lead">Dont be very suspicious. This is real books</p>
-            {% for book in books %}
+            {% for book in object_list %}
             <div class="floating-box">
                 <a href="{% url 'book_details' book.pk %}"><img src= "/media/{{ book.image }}" alt="{{ book.title }}" width="200", height="200"></a>
                 <ul class="w3-ul book">

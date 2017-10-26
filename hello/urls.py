@@ -21,9 +21,12 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^index/', views.index, name='index'),
-    url(r'^create_category/', views.create_category, name='create_category'),
+    url(r'^index/$', views.IndexView.as_view(), name='index'),
+    url(r'^add_category/$', views.AddCategoryView.as_view(), name='add_category'),
+    url(r'^add_author/$', views.AddAuthorView.as_view(), name='add_author'),
+    url(r'^books/new$', views.AddBookView.as_view(), name='add_book'),
+    url(r'^books/(?P<pk>[0-9]+)/newcomment/$', views.AddCommentView.as_view(), name='add_comment'),
     url(r'^books/$', views.books, name='books'),
-    url(r'^books/(?P<pk>[0-9]+)/$', views.book_details, name='book_details'),
-    url(r'^books/new$', views.add_book, name='add_book')
+    url(r'^books/(?P<pk>[0-9]+)/$', views.DetailsBookView.as_view(), name='book_details'),
+    url(r'^books/(?P<pk>[0-9]+)/edit/$', views.UpdateBookView.as_view(), name='book_edit')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,18 +1,5 @@
-{% load staticfiles %}
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href='{% static "favicon.ico" %}'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" >
-    <link rel="stylesheet" href="{% static 'bookstore/css/index.css' %}">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <title>Catland BookStore</title>
-</head>
-<body>
+{% extends 'bookstore/base.html' %}
+    {% block content %}
     <div class="container-fluid">
     <div class="row">
     <div class="col-sm-9">
@@ -21,6 +8,7 @@
                 <li><img src= "/media/{{ book.image }}" alt="{{ book.title }}" width="200", height="200"></li>
                 <li>image url: {{ book.image }}</li>
                 <li>Book: {{ book.title }}</li>
+                <li>Average mark: {{ book.title }}</li>
                 <li>Year: {{ book.year }}</li>
                 <li>Description: {{ book.description }}</li>
                 <li>Price: {{ book.price }}</li>
@@ -30,6 +18,16 @@
                 </li>
                 <li>Category: {{ book.category }}</li>
                 </ul>
+                <h1>Comments:</h1>
+                    {% for comment in book.comment_set.all %}
+                <ul class="w3-ul book">
+                    <li> Author: {{ comment.author }}</li>
+                    <li> {{ comment.comment }}</li>
+                    <li>Mark: {{ comment.mark }}</li>
+                </ul>
+                    {% endfor %}
+        <a href="{% url 'add_comment' book.id  %}" class="btn btn-default">Add comment</a>
+        <a href="{% url 'book_edit' book.id  %}" class="btn btn-default">Edit book</a>
             </div>
     </div>
     <div class="col-sm-3">
@@ -37,6 +35,4 @@
     </div>
     </div>
     </div>
-
-</body>
-</html>
+    {% endblock %}
